@@ -82,16 +82,26 @@ function getRandomHex() {
   return color;
 }
 
-function changeBackgroundColor() {
-  const red = Math.floor(Math.random() * 255);
-  const blue = Math.floor(Math.random() * 255);
-  const green = Math.floor(Math.random() * 255);
-
-  const color = `rgb(${red}, ${green}, ${blue})`;
-  document.body.style.backgroundColor = color;
+function getRandomSimpleColor() {
+  // Pick random color from simpleColors array
   const randomIndex = Math.floor(Math.random() * colorNames.length);
-  currentColor.textContent = colorNames[randomIndex];
-  getRandomHex();
+  return colorNames[randomIndex];
+}
+
+function changeBackgroundColor() {
+  let newColor;
+  let isHexMode = false;
+  // check current mode and get appropriate color
+  if (isHexMode) {
+    newColor = getRandomHex();
+  } else {
+    newColor = getRandomSimpleColor();
+  }
+  // Apply the color to the background
+  document.body.style.backgroundColor = newColor;
+
+  // update the color display text
+  currentColor.textContent = newColor;
 }
 
 Colorbtn.addEventListener("click", changeBackgroundColor);
