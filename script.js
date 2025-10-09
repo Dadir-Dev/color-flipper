@@ -1,7 +1,7 @@
 // DOM elements
 
 // Get the element that triggers the color change
-const Colorbtn = document.getElementById("btn");
+const colorBtn = document.getElementById("btn");
 
 // Get the element that displays current color
 const currentColor = document.querySelector(".current-color");
@@ -78,7 +78,6 @@ function getRandomHex() {
     color += hexChars[Math.floor(Math.random() * 16)];
   }
 
-  console.log(color);
   return color;
 }
 
@@ -90,7 +89,6 @@ function getRandomSimpleColor() {
 
 function changeBackgroundColor() {
   let newColor;
-  let isHexMode = false;
   // check current mode and get appropriate color
   if (isHexMode) {
     newColor = getRandomHex();
@@ -104,4 +102,20 @@ function changeBackgroundColor() {
   currentColor.textContent = newColor;
 }
 
-Colorbtn.addEventListener("click", changeBackgroundColor);
+function switchToSimpleMode() {
+  isHexMode = false;
+  simpleBtn.classList.add("active");
+  hexBtn.classList.remove("active");
+  changeBackgroundColor();
+}
+
+function switchToHexMode() {
+  isHexMode = true;
+  simpleBtn.classList.remove("active");
+  hexBtn.classList.add("active");
+  changeBackgroundColor();
+}
+
+colorBtn.addEventListener("click", changeBackgroundColor);
+simpleBtn.addEventListener("click", switchToSimpleMode);
+hexBtn.addEventListener("click", switchToHexMode);
