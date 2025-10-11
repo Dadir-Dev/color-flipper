@@ -121,7 +121,99 @@ main {
   margin-right: auto;
 }
 
+.container .color-chip {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.container .color-chip:hover {
+  transform: scale(1.1);
+  border-color: #333;
+}
+
+.container .color-chip:active {
+  transform: scale(0.95);
+}
+
 .container .instructions ul {
   text-align: left;
   display: inline-block;
+}
+
+/* Modern Footer Styles */
+.footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 2rem 1rem;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+.developer-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dev-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ecf0f1;
+}
+
+.dev-title {
+  color: #bdc3c7;
+  font-size: 0.9rem;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.github-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.github-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #95a5a6;
+  font-size: 0.85rem;
 }
