@@ -75,7 +75,7 @@ function getRandomHex() {
   // create 6 random hex characters
   let color = "#";
   for (let i = 0; i < 6; i++) {
-    color += hexChars[Math.floor(Math.random() * 16)];
+    color += hexChars[Math.floor(Math.random() * hexChars.length)];
   }
 
   return color;
@@ -87,6 +87,7 @@ function getRandomSimpleColor() {
   return colorNames[randomIndex];
 }
 
+let isHexMode = false; // default mode is simple colors
 function changeBackgroundColor() {
   let newColor;
   // check current mode and get appropriate color
@@ -95,27 +96,89 @@ function changeBackgroundColor() {
   } else {
     newColor = getRandomSimpleColor();
   }
+  console.log("Current mode:", isHexMode);
   // Apply the color to the background
   document.body.style.backgroundColor = newColor;
 
   // update the color display text
   currentColor.textContent = newColor;
+  console.log("New color:", newColor);
+
+  // Add to color history
+  addToHistory(newColor);
 }
 
 function switchToSimpleMode() {
   isHexMode = false;
   simpleBtn.classList.add("active");
   hexBtn.classList.remove("active");
-  changeBackgroundColor();
+  changeBackgroundColor(); // This is optional, makes the change immediate
 }
 
 function switchToHexMode() {
   isHexMode = true;
   simpleBtn.classList.remove("active");
   hexBtn.classList.add("active");
-  changeBackgroundColor();
+  changeBackgroundColor(); // This is optional, makes the change immediate when switching modes
 }
 
-colorBtn.addEventListener("click", changeBackgroundColor);
-simpleBtn.addEventListener("click", switchToSimpleMode);
-hexBtn.addEventListener("click", switchToHexMode);
+// Implement color history
+const colorHistoryArray = [];
+
+function addToHistory(color) {
+  // Add color to beginning of array
+  if (!colorHistoryArray.includes(color)) {
+    colorHistoryArray.unshift(color);
+  }
+
+  // Keep only the last 10 colors
+  if (colorHistoryArray.length > 10) {
+    colorHistoryArray.pop();
+  }
+  updateHistoryDisplay();
+  // console.log(colorHistoryArray);
+}
+
+function updateHistoryDisplay() {
+  colorHistory.innerHTML = "";
+  // Create a color chip for each color in the history
+  colorHistoryArray.forEach((color) => {
+    const colorChip = document.createElement("div"); // create a new div
+    colorChip.className = "color-chip"; // assign class for styling
+    colorChip.style.backgroundColor = color; // set background color
+    colorChip.title = color; // set tooltip text
+    colorHistory.appendChild(colorChip); // add to history container
+
+    colorChip.addEventListener("click", () => {
+      document.body.style.backgroundColor = color;
+      currentColor.textContent = color;
+    });
+  });
+}
+
+colorBtn.addEventListener("click", () => {
+  changeBackgroundColor();
+  console.log("Button clicked!");
+});
+simpleBtn.addEventListener("click", () => {
+  if (isHexMode) {
+    switchToSimpleMode();
+  }
+});
+hexBtn.addEventListener("click", () => {
+  if (!isHexMode) {
+    switchToHexMode();
+  }
+});
+
+changeBackgroundColor(); // Initial color on page load
+// switchToSimpleMode(); // Default mode on page load
+
+/*
+const chars = "ASDFGHJKL!12345";
+let randomChars = "#";
+for (let i = 0; i < 5; i++) {
+  randomChars += chars[Math.floor(Math.random() * chars.length)];
+}
+console.log(randomChars);
+*/
