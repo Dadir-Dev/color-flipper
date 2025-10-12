@@ -1,3 +1,70 @@
+/* MEDIA QUERIES */
+
+@media (min-width: 480px) {
+  .container h2 {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .container .btn {
+    padding: 0.95rem 1.5rem;
+  }
+  .container .color-chip {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 1.75rem 2rem;
+  }
+  nav {
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .container .btn {
+    padding: 1rem 1.75rem;
+  }
+
+  .footer {
+    border-radius: 10px;
+  }
+  .footer-content {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding: 2.5rem 3rem;
+  }
+
+  .container {
+    max-width: 900px;
+    border-radius: 16px;
+  }
+
+  .container .btn {
+    padding: 1.1rem 2rem;
+  }
+  .container .color-chip {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 /* Mobile-first responsive stylesheet for Color Flipper */
 * {
   margin: 0;
@@ -55,17 +122,17 @@ nav {
 nav h1 {
   font-size: var(--FONT-SIZE-XL);
   color: #0080f8;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.06);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links {
   display: flex;
-  gap: 0.5rem;
+  gap: clamp(0.4rem, 5vw, 2rem);
 }
 
 .nav-btn {
   background-color: transparent;
-  padding: 0.4rem 0.65rem;
+  padding: clamp(0.35rem, 3vw, 0.5rem) clamp(0.5rem, 3vw, 1.5rem);
   font-size: var(--FONT-SIZE-MD);
   font-weight: bold;
   color: var(--DARK);
@@ -98,10 +165,10 @@ main {
   flex-direction: column;
   text-align: center;
   background-color: transparent;
-  padding: 1.25rem;
+  padding: clamp(1rem, 5vw, 2rem);
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(9, 30, 66, 0.1);
-  max-width: 100%;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -186,7 +253,9 @@ main {
 .container .instructions ul {
   text-align: left;
   padding-left: 1.25rem;
-  /* display: inline-block; */
+  display: inline-block;
+  margin-top: 0.5rem;
+  list-style-type: square;
 }
 
 /* Footer (mobile-friendly stacking) */
@@ -255,82 +324,4 @@ main {
   color: #95a5a6;
   font-size: var(--FONT-SIZE-XS);
   text-align: center;
-}
-/* MEDIA QUERIES */
-
-@media (min-width: 480px) {
-  .nav-btn {
-    padding: 0.45rem 0.85rem;
-  }
-  .container {
-    padding: 1.75rem;
-  }
-  .container h2 {
-    padding: 0.9rem 1.1rem;
-    font-size: 1.5rem;
-  }
-
-  .container .btn {
-    padding: 0.95rem 1.5rem;
-  }
-  .container .color-chip {
-    width: 44px;
-    height: 44px;
-    border-radius: 6px;
-  }
-}
-
-@media (min-width: 768px) {
-  body {
-    padding: 1.75rem 2rem;
-  }
-  nav {
-    padding: 1rem 1.25rem;
-    border-radius: 10px;
-  }
-
-  .nav-links {
-    gap: 1rem;
-  }
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .container .btn {
-    padding: 1rem 1.75rem;
-  }
-
-  .footer {
-    border-radius: 10px;
-  }
-  .footer-content {
-    flex-direction: row;
-    text-align: left;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    padding: 2.5rem 3rem;
-  }
-
-  .nav-btn {
-    padding: 0.5rem 1rem;
-  }
-  .container {
-    max-width: 900px;
-    padding: 2.5rem;
-    border-radius: 16px;
-  }
-
-  .container .btn {
-    padding: 1.1rem 2rem;
-  }
-  .container .color-chip {
-    width: 50px;
-    height: 50px;
-  }
 }
