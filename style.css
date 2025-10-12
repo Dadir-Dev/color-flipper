@@ -199,7 +199,8 @@ main {
   font-weight: 600;
 }
 
-.container .btn {
+.container .btn,
+.copy-btn {
   background-color: var(--GRAY);
   color: var(--DARK);
   padding: 0.85rem 1.25rem;
@@ -212,10 +213,29 @@ main {
   transition: var(--TRANSITION);
 }
 
-.container .btn:hover {
+.copy-btn {
+  max-width: 200px;
+  margin: 0.5rem auto 1rem auto;
+}
+
+.container .btn:hover,
+.copy-btn:hover {
   transform: translateY(-2px);
   color: var(--WHITE);
   background-color: var(--DARK);
+}
+
+#copy-msg {
+  padding: clamp(0.25rem, 3vw, 0.5rem);
+  background-color: rgba(0, 249, 0, 0.5);
+  border: 1px solid rgba(0, 128, 0, 0.2);
+  border-radius: 6px;
+  font-size: var(--FONT-SIZE-XS);
+  font-weight: 500;
+  color: var(--DARK);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: -0.8rem;
 }
 
 .container .instructions {
