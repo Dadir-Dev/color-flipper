@@ -15,6 +15,11 @@ const hexBtn = document.getElementById("hex");
 // Get container for color history
 const colorHistory = document.getElementById("colorHistory");
 
+// Get copy button and message display
+const copyBtn = document.getElementById("copy-btn");
+const copyMsg = document.getElementById("copy-msg");
+const colorText = document.querySelector(".current-color");
+
 // Array of simple color names
 const colorNames = [
   "AliceBlue",
@@ -173,6 +178,27 @@ hexBtn.addEventListener("click", () => {
   if (!isHexMode) {
     switchToHexMode();
   }
+});
+
+copyBtn.addEventListener("click", () => {
+  const colorCode = colorText.textContent;
+
+  // Copy to clipboard
+  navigator.clipboard
+    .writeText(colorCode)
+    .then(() => {
+      // Show feedback message
+      copyMsg.textContent = `Copied: ${colorCode}`;
+      copyMsg.style.opacity = 1;
+
+      // Hide after 1.5s
+      setTimeout(() => {
+        copyMsg.style.opacity = 0;
+      }, 1500);
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
 });
 
 changeBackgroundColor(); // Initial color on page load
