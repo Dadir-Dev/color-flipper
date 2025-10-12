@@ -31,3 +31,8 @@ A simple and interactive web app that lets you change the background color by cl
 - **Git & GitHub**
 
 ---
+
+![Color Flipper Screenshot](/Screenshots/Screenshot%202025-10-12%20170235.png)
+![Color Flipper Screenshot](/Screenshots/Screenshot%202025-10-12%20171019.png)
+![Color Flipper Screenshot](/Screenshots/Screenshot%202025-10-12%20170602.png)
+![Color Flipper Screenshot](/Screenshots/Screenshot%202025-10-12%20170643.png)
