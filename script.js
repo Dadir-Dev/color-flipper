@@ -1,3 +1,5 @@
+// ----- Color Generation ------
+
 // DOM elements
 
 // Get the element that triggers the color change
@@ -87,6 +89,8 @@ function getRandomSimpleColor() {
   return colorNames[randomIndex];
 }
 
+// ----- User Interface Updates ------
+
 let isHexMode = false; // default mode is simple colors
 function changeBackgroundColor() {
   let newColor;
@@ -96,13 +100,11 @@ function changeBackgroundColor() {
   } else {
     newColor = getRandomSimpleColor();
   }
-  console.log("Current mode:", isHexMode);
   // Apply the color to the background
   document.body.style.backgroundColor = newColor;
 
   // update the color display text
   currentColor.textContent = newColor;
-  console.log("New color:", newColor);
 
   // Add to color history
   addToHistory(newColor);
@@ -156,6 +158,8 @@ function updateHistoryDisplay() {
   });
 }
 
+// ----- Event Listeners ------
+
 colorBtn.addEventListener("click", () => {
   changeBackgroundColor();
   console.log("Button clicked!");
@@ -172,13 +176,3 @@ hexBtn.addEventListener("click", () => {
 });
 
 changeBackgroundColor(); // Initial color on page load
-// switchToSimpleMode(); // Default mode on page load
-
-/*
-const chars = "ASDFGHJKL!12345";
-let randomChars = "#";
-for (let i = 0; i < 5; i++) {
-  randomChars += chars[Math.floor(Math.random() * chars.length)];
-}
-console.log(randomChars);
-*/
